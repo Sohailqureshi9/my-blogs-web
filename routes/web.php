@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Models\User;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +36,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
   Route::delete('/dashboard/deletepost/{id}', [AdminController::class, 'deletePost'])->name('admin.deletepost');
   Route::get('dashboard/viewpost/{id}', [AdminController::class, 'viewPost'])->name('admin.viewpost');
 });
+
+
+//Comment
+// create, edit, delete, like
+Route::post('/post/{post}/comments', [CommentController::class, 'store'])->name('comment.store');
+Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::post('/comments/{comment}/like', [CommentController::class, 'like'])->name('comments.like');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -114,8 +114,35 @@
                             </span>
                         </div>
 
-                        <div style="margin-top:0.75rem;">
-                            <livewire:comments :model="$post" />
+                        {{-- Admin view: show comments only (no form/actions) --}}
+                        <div class="comments" style="margin-top:1rem;">
+                            <h4 style="font-size:16px; font-weight:600; margin-bottom:0.75rem;">
+                                Comments ({{ $post->comments->count() }})
+                            </h4>
+
+                            @if($post->comments->isEmpty())
+                            <p style="color:#6b7280; margin:0;">No comments yet.</p>
+                            @else
+                            <ul style="list-style:none; padding:0; margin:0;">
+                                @foreach($post->comments as $comment)
+                                <li
+                                    style="margin-bottom:0.875rem; padding:0.75rem; border-radius:10px; background:#fff; border:1px solid #e5e7eb;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div style="font-weight:600; color:#111827;">
+                                            {{ optional($comment->user)->name ?? 'User #'.$comment->user_id }}
+                                        </div>
+                                        <div style="font-size:12px; color:#9ca3af;">
+                                            {{ $comment->created_at->diffForHumans() }}
+                                        </div>
+                                    </div>
+
+                                    <p style="margin-top:0.5rem; margin-bottom:0; color:#111827; white-space:pre-wrap;">
+                                        {{ $comment->body }}
+                                    </p>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
                     </div>
 

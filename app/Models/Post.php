@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Usamamuneerchaudhary\Commentify\Traits\Commentable;
+
 class Post extends Model
 {
-    use Commentable;
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->latest();
+    }
 }
