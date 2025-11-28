@@ -80,5 +80,34 @@
         </div>
         @endforelse
     </div>
+    @if ($post->hasPages())
+    <div style="display:flex; justify-content:center; gap:8px; margin-top:26px;">
+        {{-- Previous --}}
+        @if ($post->onFirstPage())
+        <span style="padding:8px 14px; background:#ddd; border-radius:6px; color:#777;">‹</span>
+        @else
+        <a href="{{ $post->previousPageUrl() }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">‹</a>
+        @endif
+    
+        {{-- Numbers --}}
+        @foreach ($post->links()->elements[0] ?? [] as $page => $url)
+        @if ($page == $post->currentPage())
+        <span style="padding:8px 14px; background:#6366f1; color:white; border-radius:6px;">{{ $page }}</span>
+        @else
+        <a href="{{ $url }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">{{ $page }}</a>
+        @endif
+        @endforeach
+    
+        {{-- Next --}}
+        @if ($post->hasMorePages())
+        <a href="{{ $post->nextPageUrl() }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">›</a>
+        @else
+        <span style="padding:8px 14px; background:#ddd; border-radius:6px; color:#777;">›</span>
+        @endif
+    </div>
+    @endif
 </div>
 @endsection

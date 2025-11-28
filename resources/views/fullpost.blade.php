@@ -88,7 +88,7 @@
                         @auth
                         {{-- Edit + Delete only for owner --}}
                         @if(auth()->id() == $comment->user_id)
-                        {{-- Edit: inline small form inside <details> for clean UI --}}
+                      
                             <details style="display:inline-block; margin-left:0.5rem;">
                                 <summary class="btn btn-sm btn-outline-secondary">
                                     ✏️ Edit

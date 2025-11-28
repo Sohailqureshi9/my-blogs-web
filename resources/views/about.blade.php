@@ -10,7 +10,7 @@
             About
         </span>
         <h1 style="font-size:32px; letter-spacing:-0.03em; margin-bottom:10px; color:#020617;">
-            About <span style="color:#4f46e5;">LaraBlog</span>
+            About <span style="color:#4f46e5;">My Blog</span>
         </h1>
         <p style="max-width:720px; margin:0 auto; font-size:15px; color:#64748b; line-height:1.7;">
             LaraBlog is a developer-focused space where we share practical guides, tips, and deep dives
@@ -67,7 +67,7 @@
     <!-- What you’ll find -->
     <div class="about-section" style="margin-bottom:32px;">
         <h2 style="font-size:22px; margin-bottom:16px; color:#0f172a;">
-            What You’ll Find on LaraBlog
+            What You’ll Find on My Blog
         </h2>
         <div class="about-features" style="display:flex; flex-wrap:wrap; gap:20px;">
             <div class="about-feature-card"

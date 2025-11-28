@@ -114,10 +114,34 @@
         @endforelse
     </div>
 
-    {{-- Pagination --}}
     @if ($posts->hasPages())
-    <div style="margin-top:26px;">
-        {{ $posts->links() }}
+    <div style="display:flex; justify-content:center; gap:8px; margin-top:26px;">
+        {{-- Previous --}}
+        @if ($posts->onFirstPage())
+        <span style="padding:8px 14px; background:#ddd; border-radius:6px; color:#777;">‹</span>
+        @else
+        <a href="{{ $posts->previousPageUrl() }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">‹</a>
+        @endif
+
+        {{-- Numbers --}}
+        @foreach ($posts->links()->elements[0] ?? [] as $page => $url)
+        @if ($page == $posts->currentPage())
+        <span style="padding:8px 14px; background:#6366f1; color:white; border-radius:6px;">{{ $page }}</span>
+        @else
+        <a href="{{ $url }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">{{ $page
+            }}</a>
+        @endif
+        @endforeach
+
+        {{-- Next --}}
+        @if ($posts->hasMorePages())
+        <a href="{{ $posts->nextPageUrl() }}"
+            style="padding:8px 14px; background:#fff; border:1px solid #ccc; border-radius:6px; color:#333;">›</a>
+        @else
+        <span style="padding:8px 14px; background:#ddd; border-radius:6px; color:#777;">›</span>
+        @endif
     </div>
     @endif
 </div>

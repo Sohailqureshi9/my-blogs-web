@@ -198,7 +198,7 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; {{ now()->year }} LaraBlog. All rights reserved. Built with ❤️ using Laravel.</p>
+                <p>&copy; {{ now()->year }} MyBlog. All rights reserved. Built with ❤️ using Laravel.</p>
             </div>
         </div>
     </footer>

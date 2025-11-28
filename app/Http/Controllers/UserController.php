@@ -9,8 +9,9 @@ class UserController extends Controller
 {
 
     public function showDataHome()
-    { 
-        $post = Post::all();
+    {
+        $query = Post::query()->latest();
+        $post = $query->paginate(4)->withQueryString();
         return view('home', compact('post'));
     }
     public function index(Request $request)
@@ -53,8 +54,7 @@ class UserController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Here you can handle the form submission, e.g., save to database or send email
-
+       
         return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
 
@@ -71,7 +71,7 @@ class UserController extends Controller
             });
         }
 
-        $posts = $query->paginate(6)->withQueryString();
+        $posts = $query->paginate(4)->withQueryString();
 
         return view('blog', compact('posts'));
     }

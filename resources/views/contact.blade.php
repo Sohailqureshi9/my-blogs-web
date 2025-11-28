@@ -64,7 +64,7 @@
                         </span>
                         <div>
                             <span style="font-size:12px; color:#94a3b8; text-transform:uppercase;">Email</span>
-                            <p style="margin:0; font-size:14px; color:#1e293b;">support@larablog.com</p>
+                            <p style="margin:0; font-size:14px; color:#1e293b;">support@myblog.com</p>
                         </div>
                     </li>
 
@@ -78,7 +78,7 @@
                         </span>
                         <div>
                             <span style="font-size:12px; color:#94a3b8; text-transform:uppercase;">Website</span>
-                            <p style="margin:0; font-size:14px; color:#1e293b;">www.larablog.com</p>
+                            <p style="margin:0; font-size:14px; color:#1e293b;">www.myblog.com</p>
                         </div>
                     </li>
 
