@@ -1,5 +1,7 @@
 @extends('home.layout')
-
+@section('title')
+Home
+@endsection
 @section('content')
 <div class="container" style="margin-top: 40px; margin-bottom: 60px;">
     <!-- Header row -->

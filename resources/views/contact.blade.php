@@ -1,5 +1,9 @@
 @extends('home.layout')
 
+@section('title')
+Contact Us
+@endsection
+
 @section('content')
 
 <div style="padding:40px 0;">
@@ -112,7 +116,7 @@
 
                 <div style="display:flex; gap:12px; margin-top:12px;">
 
-                    <a href="#" style="
+                    <a href="https://x.com/i/flow/login" style="
                         width:36px; height:36px; border-radius:50%;
                         background:#0f172a; color:white;
                         display:flex; align-items:center; justify-content:center;
@@ -120,7 +124,7 @@
                         <i class="fab fa-twitter"></i>
                     </a>
 
-                    <a href="#" style="
+                    <a href="https://github.com/login" style="
                         width:36px; height:36px; border-radius:50%;
                         background:#0f172a; color:white;
                         display:flex; align-items:center; justify-content:center;
@@ -128,7 +132,7 @@
                         <i class="fab fa-github"></i>
                     </a>
 
-                    <a href="#" style="
+                    <a href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" style="
                         width:36px; height:36px; border-radius:50%;
                         background:#0f172a; color:white;
                         display:flex; align-items:center; justify-content:center;

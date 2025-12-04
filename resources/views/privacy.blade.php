@@ -1,5 +1,7 @@
 @extends('home.layout')
-
+@section('title')
+Privacy Policy
+@endsection
 @section('content')
 <div
     style="max-width: 900px; margin: 40px auto 60px; padding: 0 20px; font-family:'Roboto', sans-serif; color:#0f172a;">
@@ -38,7 +40,7 @@
 
         <h2 style="font-size:22px; margin:22px 0 12px; color:#020617;">3. Cookies & Usage Tracking</h2>
         <p style="font-size:15px; color:#475569; line-height:1.7;">
-            LaraBlog uses cookies to improve website performance, remember your preferences, and analyze site traffic.
+            MyBlogs uses cookies to improve website performance, remember your preferences, and analyze site traffic.
             You may disable cookies in your browser settings, but some features may not work properly.
         </p>
 
@@ -62,7 +64,7 @@
 
         <h2 style="font-size:22px; margin:22px 0 12px; color:#020617;">7. Children's Privacy</h2>
         <p style="font-size:15px; color:#475569; line-height:1.7;">
-            LaraBlog does not knowingly collect personal information from children under the age of 13. If you believe a
+            MyBlogs does not knowingly collect personal information from children under the age of 13. If you believe a
             child has provided us with personal data, please contact us so we can remove it.
         </p>
 

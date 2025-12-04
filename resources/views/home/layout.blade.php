@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - Home</title>
+    <title>My Blogs - @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('homestyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -24,12 +24,18 @@
                 <label for="nav-toggle" class="nav-toggle-label">
                     <span></span>
                 </label>
-
+                @php
+                $currentUrl = url()->current();
+                @endphp
                 <div class="nav-links">
-                    <a href="{{ route('home') }}" class="nav-link active">Home</a>
-                    <a href="{{ route('home.blog') }}" class="nav-link">Blog</a>
-                    <a href="{{route('home.about')}}" class="nav-link">About</a>
-                    <a href="{{route('home.contact')}}" class="nav-link">Contact</a>
+                    <a href="{{ route('home') }}"
+                        class="nav-link {{ $currentUrl === route('home') ? 'active' : ''}}">Home</a>
+                    <a href="{{ route('home.blog') }}"
+                        class="nav-link {{$currentUrl === route('home.blog') ? 'active' : ''}}">Blog</a>
+                    <a href="{{route('home.about')}}"
+                        class="nav-link {{$currentUrl === route('home.about') ? 'active' : ''}}">About</a>
+                    <a href="{{route('home.contact')}}"
+                        class="nav-link {{$currentUrl === route('home.contact') ? 'active' : ''}}">Contact</a>
 
                     @if (Route::has('login'))
                     @auth
@@ -141,6 +147,7 @@
 
     <!-- Newsletter -->
     <section id="newsletter" class="section">
+
         <div class="container">
             <div class="newsletter">
                 <h3>Subscribe to our Newsletter</h3>
@@ -152,7 +159,7 @@
                         <i class="fa-regular fa-paper-plane"></i> Subscribe
                     </button>
                 </form>
-                <p class="newsletter-note">By subscribing, you agree to receive occasional updates from LaraBlog.</p>
+                <p class="newsletter-note">By subscribing, you agree to receive occasional updates from MyBlogs.</p>
             </div>
         </div>
     </section>
@@ -162,15 +169,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>About LaraBlog</h3>
+                    <h3>About MyBlogs</h3>
                     <p>
                         LaraBlog is a developer-focused blog dedicated to Laravel, PHP,
                         and modern web development practices — with real-world, copy-paste-ready examples.
                     </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/i/flow/login"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/login"><i class="fab fa-github"></i></a>
+                        <a
+                            href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin"><i
+                                class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -198,7 +207,7 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; {{ now()->year }} MyBlog. All rights reserved. Built with ❤️ using Laravel.</p>
+                <p>&copy; {{ now()->year }} MyBlogs. All rights reserved. Built with ❤️ using Laravel.</p>
             </div>
         </div>
     </footer>

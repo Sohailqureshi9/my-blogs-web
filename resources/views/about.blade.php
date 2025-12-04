@@ -1,5 +1,11 @@
 @extends('home.layout')
 
+@section('title')
+
+About
+
+@endsection
+
 @section('content')
 <div class="about-wrapper"
     style="max-width: 1100px; margin: 40px auto 50px; padding: 0 20px; font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; color: #0f172a;">

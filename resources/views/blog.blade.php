@@ -1,5 +1,8 @@
 @extends('home.layout')
 
+@section('title')
+Blogs
+@endsection
 @section('content')
 <div class="blog-wrapper"
     style="max-width: 1100px; margin: 40px auto 60px; padding: 0 20px; font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;">

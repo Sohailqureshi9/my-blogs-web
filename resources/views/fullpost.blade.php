@@ -1,5 +1,9 @@
 @extends('home.layout')
 
+@section('title')
+Post Details
+@endsection
+
 @section('content')
 
 <section class="post-section">
