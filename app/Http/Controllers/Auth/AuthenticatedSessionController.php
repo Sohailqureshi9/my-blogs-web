@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-
+use Illuminate\Support\Facades\Mail;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -27,10 +27,19 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $user = $request->user();
+
+        Mail::raw("User Logged in.\nName: {$user->name}\nEmail: {$user->email}", function($message) {
+            $message->to('blogs@gmail.com')
+            ->subject('User Logged In');
+        });
         if (Auth::check() && Auth::user()->user_type === 'admin')
         {
             return redirect()->intended(route('admin.dashboard', absolute: false));
         }
+
+
         return redirect()->intended(route('home', absolute: false));
     }
 

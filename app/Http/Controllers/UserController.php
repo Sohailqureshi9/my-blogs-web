@@ -11,7 +11,7 @@ class UserController extends Controller
     public function showDataHome()
     {
         $query = Post::query()->latest();
-        $post = $query->paginate(4)->withQueryString();
+        $post = $query->paginate(6)->withQueryString();
         return view('home', compact('post'));
     }
     public function index(Request $request)
@@ -71,7 +71,7 @@ class UserController extends Controller
             });
         }
 
-        $posts = $query->paginate(4)->withQueryString();
+        $posts = $query->paginate(6)->withQueryString();
 
         return view('blog', compact('posts'));
     }

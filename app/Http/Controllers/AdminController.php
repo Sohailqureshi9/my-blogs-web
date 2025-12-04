@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
 class AdminController extends Controller
 {
     public function addpost()
@@ -26,6 +26,10 @@ class AdminController extends Controller
         $post->save();
         if ($post->save()) {
             $image->move('postsimage/', $imagename);
+            Mail::raw("A new post has been uploaded.\n New Post Title: {$post->title}", function ($message) {
+                $message->to('blogs@gmail.com')
+                ->subject('Post Uploaded');
+            });
             return redirect()->route('admin.addpost')->with('status', 'Post Added Successfully');
         }
     }
@@ -62,14 +66,22 @@ class AdminController extends Controller
         $post->user_id = Auth::user()->id;
 
         $post->save();
-
+        Mail::raw("A Post has been updated.\n New Post Title: {$post->title}", function($message) {
+            $message->to('blogs@gmail.com')
+            ->subject('Post Updated');
+        });
         return redirect()->route('admin.allposts', $post->id)->with('status', 'Post Updated Successfully');
     }
     public function deletePost($id)
     {
         $post = Post::findOrFail($id);
+        $title = $post->title;
         if ($post) {
             $post->delete();
+        Mail::raw("A Post has been deleted.\n Post Title: {$title}", function ($message) {
+            $message->to('blogs@gmail.com')
+            ->subject('Post Deleted');
+        });
             return redirect()->route('admin.allposts')->with('status', 'Post Deleted Successfully');
         } else {
             return redirect()->route('admin.allposts')->with('error', 'Post Not Found');

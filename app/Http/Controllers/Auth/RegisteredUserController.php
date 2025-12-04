@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -43,9 +45,15 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        // Mail::raw("New User Registered.\nName: {$user->name}\nEmail: {$user->email}", function ($message) {
+        //     $message->to('blogs@gmail.com')
+        //         ->subject('New User Registered');
+        // });
+
+        Mail::to('blogs@gmail.com')->send(new UserRegisteredMail($user));
+
         Auth::login($user);
-        if (Auth::check() && Auth::user()->user_type === 'admin')
-        {
+        if (Auth::check() && Auth::user()->user_type === 'admin') {
             return redirect()->intended(route('admin.dashboard', absolute: false));
         }
         return redirect(route('home', absolute: false));

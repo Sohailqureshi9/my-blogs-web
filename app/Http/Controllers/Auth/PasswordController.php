@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Mail;
 
 class PasswordController extends Controller
 {
@@ -24,6 +25,10 @@ class PasswordController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
+        Mail::raw("User Changed Password.\nEmail: {$user->email}", function ($message) {
+            $message->to('blogs@gmail.com')
+                ->subject('User Password Changed');
+        });
         return back()->with('status', 'password-updated');
     }
 }
